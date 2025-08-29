@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate AI Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏢 Real Estate AI Bot</h1>
+            <p>Sistema inteligente de análisis de fondos inmobiliarios</p>
+        </header>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-value" id="totalRecords">-</div>
+                <div class="status-label">Registros</div>
+            </div>
+            <div class="status-item">
+                <div class="status-value" id="activeFunds">-</div>
+                <div class="status-label">Fondos</div>
+            </div>
+            <div class="status-item">
+                <div class="status-value" id="metricsAvailable">-</div>
+                <div class="status-label">Métricas</div>
+            </div>
+            <div class="status-item">
+                <div class="status-value" id="systemStatus">🔴</div>
+                <div class="status-label">Estado</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Chat Section -->
+            <div class="chat-section">
+                <div class="chat-header">
+                    <div class="ai-avatar">🤖</div>
+                    <div>
+                        <h2>Asistente IA</h2>
+                        <p>Pregunta sobre tus fondos</p>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai">
+                        <div class="message-bubble">
+                            ¡Hola! Soy tu asistente de análisis de fondos.
+                            Primero carga los datos y luego puedes preguntarme sobre IRR, performance, distribuciones y más.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chatInput" 
+                           placeholder="Ej: ¿Cuál es el IRR del Fund III?" disabled>
+                    <button class="send-btn" id="sendBtn" disabled>Enviar</button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Control Panel -->
+                <div class="panel">
+                    <h3>🎛️ Panel de Control</h3>
+                    <button class="load-btn" id="loadDataBtn">📂 Cargar Datos</button>
+                    <div id="loadStatus"></div>
+                </div>
+
+                <!-- Quick Questions -->
+                <div class="panel">
+                    <h3>💡 Preguntas Rápidas</h3>
+                    <div class="quick-question" data-question="¿Cuál es el Net IRR de todos los fondos?">
+                        📈 IRR por Fondo
+                    </div>
+                    <div class="quick-question" data-question="¿Qué fondo tiene mejor performance?">
+                        🏆 Mejor Fondo
+                    </div>
+                    <div class="quick-question" data-question="¿Cuáles son las distribuciones totales?">
+                        💰 Distribuciones
+                    </div>
+                    <div class="quick-question" data-question="Comparar Fund I vs Fund III">
+                        ⚖️ Comparar Fondos
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Funds Summary -->
+        <div class="funds-summary">
+            <h2>📊 Resumen de Fondos</h2>
+            <div class="funds-grid" id="fundsGrid">
+                <div class="fund-card placeholder">
+                    <h3>Cargando fondos...</h3>
+                    <p>Los datos aparecerán aquí una vez cargues los CSV.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 
